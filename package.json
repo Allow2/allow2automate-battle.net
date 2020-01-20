@@ -1,11 +1,14 @@
 {
-  "name": "wow",
+  "name": "battle.net",
   "version": "1.0.0",
-  "description": "Enable Allow2Automate management of World of Warcraft parental controls",
+  "description": "Enable Allow2Automate management of Battle.Net parental controls",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "keywords" : [
+    'allow2automate', 'battle.net', 'wow', 'world of warcraft'
+  ],
+  "author": "allow2",
   "license": "ISC"
 }
