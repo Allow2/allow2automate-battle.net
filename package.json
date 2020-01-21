@@ -2,13 +2,21 @@
   "name": "battle.net",
   "version": "1.0.0",
   "description": "Enable Allow2Automate management of Battle.Net parental controls",
-  "main": "index.js",
+  "main": "./lib/battle.net",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  repository: {
+    type: "git",
+    url: "https://github.com/Allow2/allow2automate-battle.net"
+  },
+  allow2Token:"fkdMSjd6LPhWfrHR",
+  engines: {
+    "allow2automate": "*"
+  },
   "keywords" : [
-    'allow2automate', 'battle.net', 'wow', 'world of warcraft'
+    "allow2automate", "battle.net", "wow", "world of warcraft"
   ],
-  "author": "allow2",
+  "author": "Allow2",
   "license": "ISC"
 }
