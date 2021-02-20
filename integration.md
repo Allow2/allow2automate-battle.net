@@ -24,6 +24,70 @@ and submit with:
 					</button>
 ```
 
+sends a post request:
+```
+Summary
+URL: https://account.blizzard.com/api/parental-controls/code
+Status: 200
+Source: Network
+Address: 3.34.152.193:443
+Initiator: 
+app.ff5ce358aaa702523627.js:1:531540
+
+
+Request
+:method: POST
+:scheme: https
+:authority: account.blizzard.com
+:path: /api/parental-controls/code
+Content-Type: application/json
+Accept: */*
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-au
+Host: account.blizzard.com
+Origin: https://account.blizzard.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15
+Connection: keep-alive
+Referer: https://account.blizzard.com/parent-portal/access
+Content-Length: 55
+Cookie: _ga=GA1.2.1709966123.1613784041; _gid=GA1.2.2133899473.1613784041; parentalControls=xxxxxxxxxxxxxxxx; OptanonConsent=EU=false&groups=1%3A1%2C2%3A1%2C3%3A1%2C4%3A1%2C8%3A1%2C101%3A1; SESSIONID=xxxxxxxx; XSRF-TOKEN=xxxxxxxx
+X-XSRF-TOKEN: xxxxxxxxxx
+
+Response
+:status: 200
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+Content-Security-Policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blzaccount.akamaized.net *.battle.net *.account.blizzard.com navbar.blizzard.com https://www.google-analytics.com https://blzmedia-a.akamaihd.net https://tagmanager.google.com https://stats.g.doubleclick.net https://fonts.googleapis.com; img-src 'self' 'unsafe-inline' 'unsafe-eval' data: https://blznav.akamaized.net https://blzaccount.akamaized.net https://images.blz-contentstack.com https://account.cnc.blzstatic.cn https://ssl.gstatic.com https://www.gstatic.com https://www.google.com https://d2ymosfw5yb3t5.cloudfront.net https://bnetus-a.akamaihd.net https://bneteu-a.akamaihd.net https://bnettw-a.akamaihd.net https://bnetkr-a.akamaihd.net https://bnetproduct-a.akamaihd.net https://product.cnc.blzstatic.cn *.account.blizzard.com https://www.google-analytics.com https://blzprofile.akamaized.net *.googleusercontent.com graph.facebook.com *.fbcdn.net *.fbsbx.com mem.gfx.ms *.accounts.nintendo.com https://static-resource.np.community.playstation.net http://static-resource.np.community.playstation.net https://static-resource.sp-int.community.playstation.net http://static-resource.sp-int.community.playstation.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' data: blzaccount.akamaized.net account.cnc.blzstatic.cn *.battle.net *.account.blizzard.com www.battlenet.com.cn https://www.googletagmanager.com https://tagmanager.google.com https://www.google-analytics.com https://geolocation.onetrust.com https://jssdkcdns.mparticle.com;
+Vary: Origin, Access-Control-Request-Method, Access-Control-Request-Headers
+Date: Sat, 20 Feb 2021 01:50:31 GMT
+X-Frame-Options: DENY
+Content-Length: 0
+Expires: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+
+Request Data
+MIME Type: application/json
+Request Data: 
+{"parentEmail":"email@bob.com","locale":"en-us"}
+```
+
+
+
+# submitting validation code
+
+```html
+<div data-v-064107a4="" data-v-e89fba0e="" class="code-verification blz-code-input-container d-flex justify-content-around" style="max-width: 276px;"><input data-v-064107a4="" type="text" autofocus="true" data-id="0" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="1" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="2" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="3" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="4" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="5" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"></div>
+```
+
+and submit:
+
+```html
+<button data-v-312dd04b="" data-v-e89fba0e="" id="274669047" class="btn-verification-code btn-primary btn">
+				Verify
+		</button>
+```
+
 seems to send a post request:
 
 ```
@@ -117,18 +181,4 @@ Strict-Transport-Security: max-age=31536000 ; includeSubDomains
 
 Query String Parameters
 parentEmail: email@bob.com
-```
-
-# submitting validation code
-
-```html
-<div data-v-064107a4="" data-v-e89fba0e="" class="code-verification blz-code-input-container d-flex justify-content-around" style="max-width: 276px;"><input data-v-064107a4="" type="text" autofocus="true" data-id="0" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="1" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="2" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="3" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="4" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"><input data-v-064107a4="" type="text" data-id="5" maxlength="1" class="code-input uppercase" style="max-width: 40px; height: 45px;"></div>
-```
-
-and submit:
-
-```html
-<button data-v-312dd04b="" data-v-e89fba0e="" id="274669047" class="btn-verification-code btn-primary btn">
-				Verify
-		</button>
 ```
