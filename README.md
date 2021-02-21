@@ -1,2 +1,3 @@
-# battle.net
-Enable Allow2Automate management of World of Warcraft parental controls
+# battle.net plugin for Allow2Automate
+
+Extend Allow2Automate with the ability to manipulate World of Warcraft parental controls
