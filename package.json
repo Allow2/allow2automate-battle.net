@@ -1,6 +1,7 @@
 {
   "name": "allow2automate-battle.net",
-  "version": "0.0.1",
+  "shortName": "battle.net",
+  "version": "0.0.2",
   "description": "Enable Allow2Automate management of Battle.Net parental controls",
   "main": "./index.js",
   "scripts": {
