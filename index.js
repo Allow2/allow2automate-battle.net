@@ -14,12 +14,15 @@
 //
 
 'use strict';
+const TabContent = require('./Components/TabContent.js');
 
 module.exports = function(context, callback) {
 
     var battle = {
-        allow2: context.allow2
+        test: '1'
     };
+
+    const allow2 = context.allow2;
 
     battle.blocked = function(user, callback) {
 

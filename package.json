@@ -11,10 +11,17 @@
     "type": "git",
     "url": "https://github.com/Allow2/allow2automate-battle.net"
   },
-  "allow2Token":"fkdMSjd6LPhWfrHR",
-  "keywords" : [
-    "allow2automate", "battle.net", "wow", "world of warcraft"
+  "allow2Token": "fkdMSjd6LPhWfrHR",
+  "keywords": [
+    "allow2automate",
+    "battle.net",
+    "wow",
+    "world of warcraft"
   ],
   "author": "Allow2",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "create-react-class": "^15.7.0",
+    "react": "^17.0.1"
+  }
 }
