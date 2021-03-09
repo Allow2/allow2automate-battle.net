@@ -12,24 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
 'use strict';
-const TabContent = require('./Components/TabContent.js');
 
-module.exports = function(context) {
+import React, { Component } from 'react';
 
-    var battle = {
-        test: '1',
-        TabContent: TabContent
-    };
+class TabContent extends Component {
 
-    battle.blocked = function(user, callback) {
+    // handleChange = (event) => {
+    //     this.setState({
+    //         pluginName: event.target.value
+    //     });
+    // };
 
-    };
+    constructor(...args) {
+        super(...args);
 
-    battle.teardown = function(callback) {
-        callback(null);
-    };
+        // this.state = {
+        // };
+    }
 
-    return battle;
-};
+
+    render() {
+        return (
+            <div>
+                'battle.net plugin!'
+            </div>
+        );
+    }
+}
+
+export default TabContent;
+
+
+
+
