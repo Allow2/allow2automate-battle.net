@@ -14,7 +14,7 @@
 //
 
 'use strict';
-import TabContent from './Components/TabContent';
+import TabContent from './Components/TabContent';persist
 
 function plugin(context) {
 
