@@ -1,5 +1,5 @@
 {
-  "name": "allow2automate-battle.net",
+  "name": "@allow2/allow2automate-battle.net",
   "shortName": "battle.net",
   "version": "0.0.2",
   "description": "Enable Allow2Automate management of Battle.Net parental controls",
@@ -18,15 +18,67 @@
     "type": "git",
     "url": "https://github.com/Allow2/allow2automate-battle.net"
   },
+  "bugs": {
+    "url": "https://github.com/Allow2/allow2automate-battle.net/issues"
+  },
+  "homepage": "https://github.com/Allow2/allow2automate-battle.net#readme",
   "allow2Token": "fkdMSjd6LPhWfrHR",
   "keywords": [
     "allow2automate",
     "battle.net",
     "wow",
-    "world of warcraft"
+    "world of warcraft",
+    "plugin",
+    "gaming",
+    "parental-controls"
   ],
-  "author": "Allow2",
-  "license": "Apache-2.0",
+  "author": {
+    "name": "Allow2",
+    "url": "https://allow2.com"
+  },
+  "license": "MIT",
+  "allow2automate": {
+    "plugin": true,
+    "pluginId": "allow2automate-battle.net",
+    "displayName": "Battle.net Parental Controls",
+    "category": "Gaming",
+    "permissions": [
+      "network",
+      "configuration"
+    ],
+    "minAppVersion": "2.0.0",
+    "api": {
+      "actions": [
+        {
+          "id": "enable",
+          "name": "Enable Access",
+          "description": "Enable Battle.net access for a child"
+        },
+        {
+          "id": "disable",
+          "name": "Disable Access",
+          "description": "Disable Battle.net access for a child"
+        },
+        {
+          "id": "updateQuota",
+          "name": "Update Quota",
+          "description": "Update time quota from Allow2"
+        }
+      ],
+      "triggers": [
+        {
+          "id": "quotaExceeded",
+          "name": "Quota Exceeded",
+          "description": "Triggered when child's time quota is exceeded"
+        },
+        {
+          "id": "quotaRenewed",
+          "name": "Quota Renewed",
+          "description": "Triggered when child's quota is renewed"
+        }
+      ]
+    }
+  },
   "peerDependencies": {
     "@material-ui/core": "^4.11.3",
     "react": "^16.12.0",
