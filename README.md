@@ -1,19 +1,21 @@
 # Battle.net Parental Controls Plugin
 
-Enable Allow2Automate management of Battle.Net parental controls to manage gaming time and access for your children.
+Enable Allow2Automate management of Battle.net parental controls to manage gaming time and access for your children.
 
 ## Description
 
-This plugin integrates Battle.net (Blizzard Entertainment) with Allow2 parental controls, enabling parents to monitor and control access to popular games like World of Warcraft, Overwatch, Diablo, and other Blizzard titles through automated quota management.
+This plugin integrates Battle.net (Blizzard Entertainment) with Allow2 parental controls, enabling parents to automate Battle.net parental control schedules based on Allow2 quotas. Uses Playwright browser automation to interact with the Battle.net parent portal, providing seamless integration between Allow2 and Battle.net's existing parental control system.
 
 ## Features
 
-- Real-time quota checking with Allow2
-- Automated enable/disable of Battle.net access
-- Time quota management and tracking
-- Automatic notifications when quotas are exceeded or renewed
-- Seamless integration with Allow2Automate ecosystem
+- Automated Battle.net parental control schedule updates based on Allow2 quotas
+- Token-based authentication with Battle.net parent portal
+- Browser automation via Playwright (headless or visible)
+- Enable/disable gaming access for children
+- Custom schedule management per child
 - Support for multiple child profiles
+- Token validation and extraction from URLs
+- Secure session management
 
 ## Installation
 
@@ -35,9 +37,13 @@ npm run build
 ## Configuration
 
 1. Install the plugin in your Allow2Automate application
-2. Configure your Allow2 API credentials
-3. Link your Battle.net account
-4. Set up child profiles and time quotas in Allow2
+2. Obtain your Battle.net parent portal XSRF token:
+   - Navigate to https://account.blizzard.com/parent-portal
+   - Log in with parent account
+   - Copy the URL or XSRF token from the parental controls page
+3. Enter the token or URL in the plugin configuration
+4. Pair Battle.net children with Allow2 children
+5. Enable the plugin to start automated quota management
 
 ### Required Permissions
 
@@ -51,44 +57,73 @@ These permissions are necessary for the plugin to:
 - Enable or disable Battle.net access based on quota availability
 - Update child profile settings and track gaming time
 
-## Usage
+## How It Works
 
-### Basic Setup
+1. **Token Extraction**: The plugin accepts Battle.net parent portal tokens in multiple formats:
+   - Full URL: `https://account.blizzard.com/parent-portal/parental-controls/12345?xsrfToken=G0ABCD...`
+   - Token only: `G0ABCD1234567890...` (G0 + 64 hex characters)
+   - Partial URL: `parent-portal/parental-controls/12345?xsrfToken=G0ABCD...`
+
+2. **Browser Automation**: Uses Playwright to:
+   - Authenticate with Battle.net parent portal using the XSRF token
+   - Fetch child account information
+   - Update parental control schedules
+
+3. **Schedule Management**:
+   - Enable gaming: Sets unlimited schedule (all time blocks enabled)
+   - Disable gaming: Blocks all time slots (all time blocks set to 0)
+   - Custom schedules: Supports granular time block configuration
+
+4. **Integration**: Works alongside Allow2 quota system to enforce time limits
+
+## Token Format
+
+Battle.net XSRF tokens follow this pattern:
+- Prefix: `G0`
+- Length: 66 characters total (G0 + 64 hex digits)
+- Characters: Hexadecimal (0-9, A-F)
+- Example: `G0A1B2C3D4E5F6789012345678901234567890123456789012345678901234567890`
+
+## API Usage
+
+### Validate Token
 
 ```javascript
-import BattleNetPlugin from '@allow2/allow2automate-battle.net';
+const TokenValidator = require('@allow2/allow2automate-battle.net/src/TokenValidator');
+const validator = new TokenValidator();
 
-const plugin = new BattleNetPlugin({
-  allow2Token: 'your-allow2-token',
-  battleNetCredentials: {
-    // Your Battle.net configuration
-  }
-});
+const result = validator.validateInput(userInput);
+if (result.success) {
+  console.log('Token:', result.token);
+  console.log('Child ID:', result.childId);
+}
 ```
 
-### Enable Access
+### Portal Client
 
 ```javascript
-await plugin.actions.enable({
-  childId: 'child-123',
-  activityId: 'gaming'
+const ParentPortalClient = require('@allow2/allow2automate-battle.net/src/ParentPortalClient');
+const client = new ParentPortalClient({ headless: true });
+
+// Authenticate
+await client.authenticate(tokenOrUrl, 'parent@email.com');
+
+// Enable gaming
+await client.enableGaming(childId);
+
+// Disable gaming
+await client.disableGaming(childId);
+
+// Custom schedule
+await client.updateSchedule(childId, {
+  enabled: true,
+  monday: 123456,
+  tuesday: 789012,
+  // ... other days
 });
-```
 
-### Disable Access
-
-```javascript
-await plugin.actions.disable({
-  childId: 'child-123'
-});
-```
-
-### Update Quota
-
-```javascript
-await plugin.actions.updateQuota({
-  childId: 'child-123'
-});
+// Cleanup
+await client.close();
 ```
 
 ## API Documentation

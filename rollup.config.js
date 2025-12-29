@@ -23,7 +23,9 @@ export default {
         // postcss({
         //     modules: true
         // }),,
-        nodeResolve(),
+        nodeResolve({
+            preferBuiltins: true
+        }),
         commonjs({
             //exclude: 'src/**',
             include: 'node_modules/**'
@@ -44,5 +46,10 @@ export default {
             }
         ]
     ],
-    external: Object.keys(pkg.peerDependencies || {})
+    external: [
+        ...Object.keys(pkg.peerDependencies || {}),
+        ...Object.keys(pkg.dependencies || {}),
+        'playwright',
+        'playwright-core'
+    ]
 }
